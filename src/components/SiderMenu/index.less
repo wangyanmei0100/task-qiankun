@@ -1,0 +1,228 @@
+@import '~dtd/lib/style/themes/default.less';
+
+@ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+.headTitle {
+  font-size: 20px;
+  color: #fff;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.sider {
+  height: 100%;
+  // height: calc(100vh - 50px);
+  // min-height: 700px;
+  // box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+  position: relative;
+  z-index: 10;
+  font-family: 'microsoft yahei', 'Open Sans', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+
+  :global {
+    .dt-sidebar-item {
+      padding: 0 16px !important;
+    }
+    .dt-menu-dark .dt-menu-inline.dt-menu-sub {
+      box-shadow: none;
+    }
+    .dt-sidebar-sub-detail-title {
+      color: #eee;
+    }
+    & .dt-sidebar-drawer {
+      font-weight: 400;
+      .dt-sidebar-item a {
+        color: #666;
+      }
+    }
+    .dt-sidebar {
+      width: 180px;
+      &.dt-sidebar-inline-collapsed {
+        width: 52px;
+      }
+    }
+
+    .dt-sidebar:not(.dt-sidebar-inline-collapsed) {
+      .dt-sidebar-ul {
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+    }
+
+    .dt-sidebar-ul::-webkit-scrollbar {
+      display: none;
+    }
+
+    & .dt-sidebar-item a {
+      color: hsla(0, 0%, 100%, 0.6);
+      &:hover,
+      &:active,
+      &:visited,
+      &:link {
+        text-decoration: none;
+        // color: hsla(0,0%,100%,.6);
+      }
+      &:before {
+        position: absolute;
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        content: '';
+      }
+    }
+    & .dt-sidebar-item.dt-sidebar-item-selected a {
+      color: #fff;
+    }
+    & .dt-sidebar-item:hover a {
+      color: #fff;
+    }
+    //.dt-menu-inline .dt-menu-item,
+    //.dt-menu-inline .dt-menu-submenu-title {
+    //  margin: 0;
+    //}
+    .dt-tag.dt-tag-has-color {
+      margin-left: 5px;
+      border-radius: 7px;
+    }
+    // .dt-sidebar-subSidebar .dt-sidebar-sub .dt-sidebar-item {
+    //   // padding-left: 47px;
+    // }
+    .dt-sidebar-drawer .dt-sidebar-subSidebar .dt-sidebar-sub .dt-sidebar-item {
+      // padding-left: 32px;
+
+      &:not(.dt-sidebar-subSidebar-title) {
+        &:hover {
+          a {
+            color: #48b4ec;
+          }
+        }
+        &.dt-sidebar-item-selected {
+          background: #00b4ed;
+          // i{
+          //   display: none;
+          // }
+          &:hover {
+            a {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+    .dt-sidebar-drawer-inner .dt-sidebar-subSidebar-title.dt-sidebar-item-selected a {
+      color: #333;
+    }
+    .dt-sidebar-drawer-inner {
+      .dt-sidebar-item {
+        i ~ * {
+          display: inline-block;
+        }
+      }
+      .dt-sidebar-subSidebar-title {
+        i {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+i.trigger {
+  width: 100%;
+  font-size: 20px;
+  line-height: 30px;
+  cursor: pointer;
+  background: #4c576c;
+  transition: all 0.3s, padding 0s;
+
+  &:hover {
+    background: mix(#4c576c, @layout-sider-background, 60%);
+  }
+}
+
+.icon {
+  width: 20px;
+  line-height: 20px;
+  display: inline-block;
+  // vertical-align: top;
+  text-align: center;
+  margin-top: 9px;
+  margin-right: 14px;
+}
+
+:global(.dt-layout-sider:not(.dt-layout-sider-collapsed)) {
+  .icon {
+    margin-left: -5px;
+  }
+}
+
+:global {
+  .dt-sidebar-inline-collapsed .dt-sidebar-sub-detail .dt-sidebar-item i ~ * {
+    display: inline-block; // 二级菜单若配置icon后，收缩菜单时需显示内容
+  }
+  .dt-sidebar-inline-collapsed .dt-sidebar-item svg ~ *,
+  .dt-sidebar-inline-collapsed .dt-sidebar-logo svg ~ * {
+    display: none;
+  }
+  .dt-sidebar-inline-collapsed
+    .dt-sidebar-ul
+    > .dt-sidebar-item:hover
+    .dt-sidebar-item-detail
+    svg
+    ~ * {
+    display: block;
+  }
+  .dt-sidebar-ul > .dt-sidebar-item > .dt-sidebar-item-detail svg {
+    display: none;
+  }
+
+  .drawer .drawer-content {
+    background: #001529;
+  }
+
+  .dt-menu-inline-collapsed {
+    > .dt-menu-item > a,
+    > .dt-menu-submenu > .dt-menu-submenu-title {
+      .sidebaricon + span {
+        max-width: 0;
+        display: inline-block;
+        opacity: 0;
+      }
+    }
+  }
+
+  .dt-menu-inline-collapsed-tooltip .sidebaricon {
+    display: none;
+  }
+
+  .dt-menu .dt-tag {
+    margin-left: 5px;
+    border-radius: 5px;
+    line-height: 1.4;
+    height: auto;
+  }
+
+  .dt-menu-submenu-title .sidebaricon + span {
+    transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+      width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    opacity: 1;
+  }
+}
+
+.sidebar-container {
+  display: flex;
+  position: relative;
+  height: 100%;
+}
+.categoryBox {
+  position: relative;
+  background: #f2f2f2;
+  flex: 1 1;
+}
+.category {
+  // border-right: 1px solid #dcdcdc;
+  height: 100%;
+}

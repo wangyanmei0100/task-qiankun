@@ -1,0 +1,149 @@
+@import '~dtd/lib/style/themes/default.less';
+
+.pageHeader {
+  padding: 16px 24px 0 24px;
+
+  .detail {
+    display: flex;
+  }
+
+  .row {
+    display: flex;
+  }
+
+  .breadcrumb {
+    margin-bottom: 16px;
+    a {
+      color: #00ace2;
+    }
+  }
+
+  .tabs {
+    margin: 0 0 -17px -8px;
+
+    :global {
+      .dt-tabs-bar {
+        border-bottom: @border-width-base @border-style-base @border-color-split;
+      }
+    }
+  }
+
+  .logo {
+    flex: 0 1 auto;
+    margin-right: 16px;
+    padding-top: 1px;
+    > img {
+      width: 28px;
+      height: 28px;
+      border-radius: @border-radius-base;
+      display: block;
+    }
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: @heading-color;
+  }
+
+  .action {
+    margin-left: 56px;
+    min-width: 266px;
+
+    :global {
+      .dt-btn-group:not(:last-child),
+      .dt-btn:not(:last-child) {
+        margin-right: 8px;
+      }
+
+      .dt-btn-group > .dt-btn {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .title,
+  .action,
+  .content,
+  .extraContent,
+  .main {
+    flex: auto;
+  }
+
+  .title,
+  .action {
+    margin-bottom: 16px;
+  }
+
+  .logo,
+  .content,
+  .extraContent {
+    margin-bottom: 16px;
+  }
+
+  .action,
+  .extraContent {
+    text-align: right;
+  }
+
+  .extraContent {
+    margin-left: 88px;
+    min-width: 242px;
+  }
+}
+
+@media screen and (max-width: @screen-xl) {
+  .pageHeader {
+    .extraContent {
+      margin-left: 44px;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-lg) {
+  .pageHeader {
+    .extraContent {
+      margin-left: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-md) {
+  .pageHeader {
+    .row {
+      display: block;
+    }
+
+    .action,
+    .extraContent {
+      margin-left: 0;
+      text-align: left;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-sm) {
+  .pageHeader {
+    .detail {
+      display: block;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-xs) {
+  .pageHeader {
+    .action {
+      :global {
+        .dt-btn-group,
+        .dt-btn {
+          display: block;
+          margin-bottom: 8px;
+        }
+        .dt-btn-group > .dt-btn {
+          display: inline-block;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
